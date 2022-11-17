@@ -26,6 +26,10 @@ import CardComponent from './CardComponent.vue';
 
 <style lang="scss" scoped>
     
+    .container:last-child {
+        padding-top: 0 !important;
+    }
+
     .row {
         flex-wrap: nowrap;
         overflow-x: auto; 
