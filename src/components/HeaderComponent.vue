@@ -1,19 +1,21 @@
 <template>
-    <div class="header container d-flex align-items-center justify-content-between">
-        <div class="d-flex">
-            <img src="../../public/img/boolflix.png" alt="BoolFlix Logo" class="me-5">
-            <div class="links">
-                <span class="active">Home</span>
-                <span>Film</span>
-                <span>Serie TV</span>
+    <div class="header">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="d-flex">
+                <img src="../../public/img/boolflix.png" alt="BoolFlix Logo" class="me-5">
+                <div class="links">
+                    <span class="active">Home</span>
+                    <span>Film</span>
+                    <span>Serie TV</span>
+                </div>
             </div>
-        </div>
-        <div class="search-bar">
-            <form class="d-flex" action="" @submit.prevent="search">
-                <label class="visually-hidden" for="searchFilmSerie">Search</label>
-                <input type="text" class="form-control" placeholder="Titoli, persone, generi" v-model="text">
-                <button type="submit" class="btn btn-danger ms-3">Search</button>
-            </form>
+            <div class="search-bar">
+                <form class="d-flex" action="" @submit.prevent="search">
+                    <label class="visually-hidden" for="searchFilmSerie">Search</label>
+                    <input type="text" class="form-control" placeholder="Titoli, persone, generi" v-model="text">
+                    <button type="submit" class="btn btn-danger ms-3">Search</button>
+                </form>
+            </div>
         </div>
     </div>
 </template>
@@ -41,7 +43,16 @@ import { store } from '../store';
 
 .header {
 
-    height: 70px;
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    z-index: 9999;
+    background-color: $black;
+    width: 100%;
+
+    .container {
+        height: 70px;
+    }
 
     img {
         width: 7rem;

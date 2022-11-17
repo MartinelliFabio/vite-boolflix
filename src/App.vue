@@ -3,7 +3,7 @@
     <HeaderComponent/>
   </header>
   <main>
-    <MainComponent title="Movies" :items='store.movie'/>
+    <MainComponent title="Films" :items='store.movie'/>
     <MainComponent title="TV Series" :items='store.tv'/>
   </main>
 </template>
