@@ -9,15 +9,28 @@
             </div>
         </div>
         <div class="search-bar">
-            <label class="visually-hidden" for="searchFilmSerie">Search</label>
-            <input type="text" class="form-control" placeholder="Titoli, persone, generi">
+            <form class="d-flex" action="" @submit.prevent="search">
+                <label class="visually-hidden" for="searchFilmSerie">Search</label>
+                <input type="text" class="form-control" placeholder="Titoli, persone, generi" v-model="text">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'HeaderComponent'
+        name: 'HeaderComponent',
+        data() {
+            return {
+                text: ''
+            }
+        },
+        methods: {
+            search() {
+                console.log(this.text);
+            }
+        }
     }
 </script>
 
