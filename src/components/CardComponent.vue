@@ -1,19 +1,26 @@
 <template>
     <div class="box">
-
+        <h2>{{ item.original_title||item.original_name }}</h2>
+        <div>{{ item.title||item.name }}</div>
+        <div>{{ item.vote_average }}</div>
+        <div>{{ item.original_language }}</div>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'CardComponent'
+        name: 'CardComponent',
+        props: {
+            item: Object
+        }
     }
 </script>
 
 <style lang="scss" scoped>
     .box {
-        width: 100px;
-        height: 100px;
-        border: 1px solid white;
+
+        h2 {
+            text-transform: uppercase;
+        }
     }
 </style>

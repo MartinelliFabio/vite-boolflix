@@ -12,13 +12,14 @@
             <form class="d-flex" action="" @submit.prevent="search">
                 <label class="visually-hidden" for="searchFilmSerie">Search</label>
                 <input type="text" class="form-control" placeholder="Titoli, persone, generi" v-model="text">
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" class="btn btn-danger ms-3">Search</button>
             </form>
         </div>
     </div>
 </template>
 
 <script>
+import { store } from '../store';
     export default {
         name: 'HeaderComponent',
         data() {
@@ -29,6 +30,7 @@
         methods: {
             search() {
                 console.log(this.text);
+                store.params.query = this.text;
             }
         }
     }

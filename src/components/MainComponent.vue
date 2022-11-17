@@ -1,6 +1,9 @@
 <template>
     <div class="container cbd">
-        <CardComponent/>
+        <h1>{{ title }}</h1>
+        <div v-for="(item, index) in items" :key="item.id">
+            <CardComponent :item='item'/>
+        </div>
     </div>
 </template>
 
@@ -10,6 +13,10 @@ import CardComponent from './CardComponent.vue';
         name: 'MainComponent',
         components: {
             CardComponent
+        },
+        props: {
+            items: Array,
+            title: String
         }
     }
 </script>
