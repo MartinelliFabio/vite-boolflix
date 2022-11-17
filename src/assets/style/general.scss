@@ -1,5 +1,19 @@
+@use './partials/variables' as*;
+
 $fa-font-path : "./webfonts";
 @import '/node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '/node_modules/@fortawesome/fontawesome-free/scss/brands.scss';
 @import '/node_modules/@fortawesome/fontawesome-free/scss/regular.scss';
 @import '/node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
+
+@import 'bootstrap/scss/bootstrap';
+
+
+body {
+    background-color: $black;
+    color: $white;
+}
+
+img {
+    max-width: 100%;
+}
