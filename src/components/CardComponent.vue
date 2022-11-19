@@ -1,14 +1,22 @@
 <template>
-    <div class="box">
-        <div class="box-img">
-            <img :src="imgBase + item.backdrop_path" :alt="item.title||item.name">
+    <div class="box" :class="{'img-default-size': true, 'img-enlarged-size': imageEnlarged}" @mouseover="enlargeImage" @mouseout="shrinkImage">
+        <div class="box-img" @mouseover="hover = true" @mouseout="hover = false">
+            <div class="position-absolute overview" v-if="hover">
+                <div class="d-flex">
+                    {{ item.overview }}
+                </div>
+            </div>
+            <div class="gradient"></div>
+            <img :src="item.backdrop_path ? imgBase + item.backdrop_path : 'https://via.placeholder.com/342x192'" :alt="item.title||item.name">
             <div class="title">{{ item.title||item.name }}</div>
         </div>
         <h5>{{ item.original_title||item.original_name }}</h5>
         <div>
             <span v-for="n in 5" class="fa-star" :class="(n <= star) ? 'fa-solid' : 'fa-regular'"></span>
         </div>
-        <div><img :src="flag" :alt="item.original_language" class="flag"></div>
+        <div>
+            <img :src="flag" :alt="item.original_language" class="flag">
+        </div>
     </div>
 </template>
 
@@ -20,8 +28,19 @@
         },
         data() {
             return {
-                imgBase: 'https://image.tmdb.org/t/p/w342'
+                imgBase: 'https://image.tmdb.org/t/p/w342',
+                imageEnlarged: false,
+                hover: false,
             }
+        },
+        methods: {
+            enlargeImage() {
+                console.log("enlarged");
+                this.imageEnlarged = true;
+            },
+            shrinkImage() {
+                this.imageEnlarged = false;
+            },
         },
         computed: {
             star() {
@@ -49,13 +68,27 @@
 </script>
 
 <style lang="scss" scoped>
+@use '../assets/style/partials/variables' as*;
+
+    .gradient {
+        background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgba(0, 0, 0, 1));
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        opacity: 80%;
+    }
+
     .box {
         overflow-y: hidden;
         height: 290px;
 
         .box-img {
             position: relative;
+            cursor: pointer;
         }
+
         .title {
             position: absolute;
             top: 0;
@@ -73,5 +106,18 @@
         .flag {
             width: 25px;
         }
+    }
+
+    .img-default-size {
+        transition: all 0.2s;
+    }
+
+    .img-enlarged-size {
+        transform: scale(1.1);
+        transition: all 0.2s;
+    }
+
+    .overview {
+        overflow-y: hidden;
     }
 </style>

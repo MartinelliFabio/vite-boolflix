@@ -34,12 +34,13 @@ import CardComponent from './CardComponent.vue';
         flex-wrap: nowrap;
         overflow-x: auto; 
         margin-bottom: 50px;
+        padding: 20px;
 
         div.slider:last-child {
             margin-right: 0 !important;
         }
-
     }
+
 
     .row::-webkit-scrollbar {
         width: 6px;
